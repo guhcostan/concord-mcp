@@ -106,7 +106,9 @@ try {
       );
     }
   }
-  throw error;
+  const message = error instanceof Error ? error.message : String(error);
+  process.stderr.write(`concord: ${message}\n`);
+  process.exitCode = 1;
 } finally {
   await telemetry?.close();
 }

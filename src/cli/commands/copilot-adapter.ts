@@ -69,7 +69,7 @@ export function supportsUiServer(versionOutput: string): boolean {
  */
 export async function launchCopilot(args: readonly string[]): Promise<void> {
   const executable = executablePath('copilot', process.env);
-  if (executable === undefined) throw new Error('Copilot CLI was not found on PATH.');
+  if (executable === undefined) throw new Error('Copilot CLI was not found on PATH. Install it (npm i -g @github/copilot) and try again.');
   const version = run(executable, ['--version'], process.env).output;
   let plan = { args: [...args], env: process.env };
   if (supportsUiServer(version)) {
