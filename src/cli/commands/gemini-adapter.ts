@@ -40,7 +40,7 @@ export function geminiLaunchPlan(args: readonly string[]): {
 /** Run Gemini CLI with the monitor started on its first turn. */
 export async function launchGemini(args: readonly string[]): Promise<void> {
   const executable = executablePath('gemini', process.env);
-  if (executable === undefined) throw new Error('Gemini CLI was not found on PATH.');
+  if (executable === undefined) throw new Error('Gemini CLI was not found on PATH. Install it (npm i -g @google/gemini-cli) and try again.');
   const plan = geminiLaunchPlan(args);
   if (!plan.startsMonitor) {
     process.stderr.write(
